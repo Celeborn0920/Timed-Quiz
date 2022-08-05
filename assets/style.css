@@ -1,0 +1,61 @@
+header {
+    text-align: center;
+}
+
+div {
+    padding: 1rem;
+}
+
+body {
+    text-align: center;
+    background-color: teal;
+    color: azure;
+    /* width:100vh;
+    height:100vh; */
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.top {
+    background-color: #FFD700;
+    color: black;
+}
+
+#startBtn {
+    position: relative;
+    height: 40px;
+    text-align: center;
+}
+
+.answerContainer {
+    width: 800px;
+    max-width: 80%;
+    background-color: azure;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+    align-items: center;
+    left: 275px;
+    display: none;
+}
+
+.answerBtn {
+    height: 25px;
+    align-items: center;
+    max-width: 80%;
+}
+
+#question {
+    display: none;
+}
+
+#timer {
+    text-align: right;
+    position: relative;
+    /* bottom: 200px; */
+    color: black;
+}
+
+.card {
+    display:none;
+}
