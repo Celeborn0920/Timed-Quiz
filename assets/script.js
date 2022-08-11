@@ -27,6 +27,7 @@ function startGame() {
     startBtn.style.display = "none"
     questionDiv.style.display = "block"
     answers.style.display = "grid"
+    scoreBtn.style.display= "none"
     setQuestion()
     setTime()
 }
@@ -124,7 +125,7 @@ function saveScore() {
     window.location = "index.html"
 }
 document.querySelector("#saveBtn").addEventListener("click", saveScore)
-// saveBtn.addEventListener("click",window.location='scores.html')
+
 scoreBtn.addEventListener("click", function () {
     window.location = 'scores.html'
 })
