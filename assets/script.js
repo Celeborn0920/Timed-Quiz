@@ -5,14 +5,11 @@ var answerBtns = document.querySelectorAll(".answerBtn")
 var currentIndex = 0
 var timeRemaining = 60
 var timer = document.querySelector("#timer")
-// var scoresList; //Define structure that I want to save to local storage
 var questionsEl = document.querySelector("#question")
-var scoresList = localStorage.getItem("scoresList"); //
 var initials = document.querySelector('#initials')
 var grade = document.querySelector('#savedScore')
 var saveBtn = document.querySelector('#saveBtn')
 var scoreCard = document.querySelector('.card')
-console.log(scoresList)
 var score = 0
 let timerInterval
 var scoreBtn = document.querySelector('#scoreBtn')
