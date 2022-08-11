@@ -3,16 +3,22 @@ var questionDiv = document.querySelector("#question")
 var answers = document.querySelector(".answerContainer")
 var answerBtns = document.querySelectorAll(".answerBtn")
 var currentIndex = 0
-var timeRemaining = 60
+var timeRemaining = 20
 var timer = document.querySelector("#timer")
 // var scoresList; //Define structure that I want to save to local storage
 var questionsEl = document.querySelector("#question")
 var scoresList = localStorage.getItem("scoresList"); //
 var initials = document.querySelector('#initials')
-var grade = document.querySelector('#savedGrade') 
-var saveBtn = document.querySelector ('#saveBtn')
+var grade = document.querySelector('#savedScore')
+var saveBtn = document.querySelector('#saveBtn')
 var scoreCard = document.querySelector('.card')
 console.log(scoresList)
+var score = 0
+let timerInterval
+var scoreBtn = document.querySelector('#scoreBtn')
+
+var records = JSON.parse(localStorage.getItem("record")) || [];
+
 
 startBtn.addEventListener("click", startGame)
 // Still need to add function to call saveBtn.addEventListener("click",)
@@ -44,11 +50,17 @@ function checkAnswer(event) {
     var correctAnswer = questions[currentIndex].answer
     if (userAnswer === correctAnswer) {
         alert('Correct!')
+        score++
     } else {
         alert('Incorrect!')
     }
     currentIndex++
-    setQuestion()
+    if (currentIndex < questions.length) {
+        setQuestion()
+    } else {
+        endQuiz()
+    }
+
 }
 
 var questions = [
@@ -80,33 +92,42 @@ var questions = [
 ]
 
 function setTime() {
-    let timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         timeRemaining--;
         timer.textContent = `Time Remaining:${timeRemaining}s`;
         // Below block returns the page to its original form upon time reaching "0"
         if (timeRemaining === 0) {
-            clearInterval(timerInterval);
-            startBtn.style.display = "block"
-            questionDiv.style.display = "none"
-            answers.style.display = "none"
-            scoreCard.style.display = "block"
+            endQuiz()
         }
     }, 1000);
 }
+function endQuiz() {
+    clearInterval(timerInterval);
+    startBtn.style.display = "block"
+    questionDiv.style.display = "none"
+    answers.style.display = "none"
+    scoreCard.style.display = "block"
+}
+function saveScore() {
+    console.log('Testing')
+    var initialInput = document.querySelector("#initials")
+    var initials = initialInput.value
+    var record = {
+        initials: initials,
+        score: score
+    }
 
-console.log(questions)
+    records.push(record)
 
-function saveLastScore() {
-    // Save related form data as an object
-    var studentGrade = {
-      student: student.value,
-      grade: grade.value,
-      comment: comment.value.trim()
-    };
-    // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
-    localStorage.setItem("studentGrade", JSON.stringify(studentGrade));
-  }
+    localStorage.setItem("record", JSON.stringify(records))
 
+    window.location = "index.html"
+}
+document.querySelector("#saveBtn").addEventListener("click", saveScore)
+// saveBtn.addEventListener("click",window.location='scores.html')
+scoreBtn.addEventListener("click", function () {
+    window.location = 'scores.html'
+})
 // Game-over scenario after last question or timer runs out
 // Place function where appropriate
-// Check local storage activities 
+// Check local storage activities

@@ -1,4 +1,5 @@
-header {
+body {
+    background-color: teal;
     text-align: center;
 }
 
@@ -6,14 +7,10 @@ div {
     padding: 1rem;
 }
 
-body {
+#header {
     text-align: center;
     background-color: teal;
     color: azure;
-    /* width:100vh;
-    height:100vh; */
-    /* justify-content: center;
-    align-items: center; */
 }
 
 .top {
@@ -21,7 +18,7 @@ body {
     color: black;
 }
 
-#startBtn {
+button {
     position: relative;
     height: 40px;
     text-align: center;
@@ -58,4 +55,8 @@ body {
 
 .card {
     display:none;
+}
+
+#score-list {
+    text-align: left;
 }
