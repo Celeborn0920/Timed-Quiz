@@ -3,7 +3,7 @@ var questionDiv = document.querySelector("#question")
 var answers = document.querySelector(".answerContainer")
 var answerBtns = document.querySelectorAll(".answerBtn")
 var currentIndex = 0
-var timeRemaining = 20
+var timeRemaining = 60
 var timer = document.querySelector("#timer")
 // var scoresList; //Define structure that I want to save to local storage
 var questionsEl = document.querySelector("#question")
